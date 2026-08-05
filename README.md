@@ -60,6 +60,15 @@
 <br/>
 🔨<h3>​​Roadmap​</h3>🔨
 <hr/>
+<p>Nada por el momento.</p>
+<br/>
+<h3>Objetivos de aprendizaje</h3>
+<hr/>
+<ul>
+  <li>Practicar más programación orientada a objetos.</li>
+  <li>Diseñar una aplicación de escritorio en Java, para aprender.</li>
+  <li>Aplicar buenas prácticas de organización del código.</li>
+</ul>
 <br/>
 🤵<h3>Desarrollador</h3>🤵
 <hr/>
