@@ -16,8 +16,8 @@
 <br/>
 <h3>Descripción del proyecto</h3>
 <hr/>
-<p>Este proyecto consiste en una aplicación destinada a crear, editar, eliminar, y ordenar apuntes.</p>
-<p>Está diseñada ser intuitiva y simple de usar, útil para tomar notas de cualquier cosa y tenerlas en un mismo lugar.</p>
+<p>Este proyecto consiste en una aplicación destinada a crear, editar, eliminar y ordenar apuntes.</p>
+<p>Está diseñada para ser intuitiva y simple de usar, útil para tomar notas de cualquier cosa y tenerlas en un mismo lugar.</p>
 
 <br/>
 🛠️<h3>Funcionalidades</h3>🛠️
@@ -28,7 +28,7 @@
   <li>Editar apuntes.</li>
   <li>Eliminar apuntes.</li>
   <li>Marcar apuntes como favoritos.</li>
-  <li>Ordenar apuntes.</li>
+  <li>Ordenar por fecha o título.</li>
 </ul>
 <b>Futuras</b>
 <ul>
@@ -49,6 +49,8 @@
 <hr/>
 <ul>
   <li>Java.</li>
+  <li>Git</li>
+  <li>GitHub</li>
 </ul>
 <br/>
 🏗️<h3>​​Estructura del proyecto​</h3>🏗️
@@ -61,7 +63,22 @@
 <br/>
 🔨<h3>​​Roadmap​</h3>🔨
 <hr/>
-<p>Nada por el momento.</p>
+<p><b>Básico</b></p>
+- [] Implementar la gestión de apuntes (CRUD).
+- [] Marcar y desmarcar apuntes como favoritos.
+- [] Guardar y cargar apuntes desde el almacenamiento.
+- [] Crear la interfaz principal.
+- [] Mostrar y organizar la lista de apuntes y carpetas.
+- [] Permitir ordenar los apuntes.
+- [] Separar correctamente la lógica de negocio de la interfaz (arquitectura MVC).
+<p><b>A futuro</b></p>
+- [] Añadir modo oscuro.
+- [] Implementar categorías.
+- [] Implementar etiquetas.
+- [] Añadir un buscador.
+- [] Personalizar fuentes y apariencia del editor.
+- [] Exportar apuntes.
+- [] Importar apuntes.
 <br/>
 <h3>Objetivos de aprendizaje</h3>
 <hr/>
