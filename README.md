@@ -64,21 +64,23 @@
 🔨<h3>​​Roadmap​</h3>🔨
 <hr/>
 <p><b>Básico</b></p>
-- [] Implementar la gestión de apuntes (CRUD).
-- [] Marcar y desmarcar apuntes como favoritos.
-- [] Guardar y cargar apuntes desde el almacenamiento.
-- [] Crear la interfaz principal.
-- [] Mostrar y organizar la lista de apuntes y carpetas.
-- [] Permitir ordenar los apuntes.
-- [] Separar correctamente la lógica de negocio de la interfaz (arquitectura MVC).
+
+- [ ] Implementar la gestión de apuntes (CRUD).
+- [ ] Marcar y desmarcar apuntes como favoritos.
+- [ ] Guardar y cargar apuntes desde el almacenamiento.
+- [ ] Crear la interfaz principal.
+- [ ] Mostrar y organizar la lista de apuntes y carpetas.
+- [ ] Permitir ordenar los apuntes.
+- [ ] Separar correctamente la lógica de negocio de la interfaz (arquitectura MVC).
 <p><b>A futuro</b></p>
-- [] Añadir modo oscuro.
-- [] Implementar categorías.
-- [] Implementar etiquetas.
-- [] Añadir un buscador.
-- [] Personalizar fuentes y apariencia del editor.
-- [] Exportar apuntes.
-- [] Importar apuntes.
+
+- [ ] Añadir modo oscuro.
+- [ ] Implementar categorías.
+- [ ] Implementar etiquetas.
+- [ ] Añadir un buscador.
+- [ ] Personalizar fuentes y apariencia del editor.
+- [ ] Exportar apuntes.
+- [ ] Importar apuntes.
 <br/>
 <h3>Objetivos de aprendizaje</h3>
 <hr/>
