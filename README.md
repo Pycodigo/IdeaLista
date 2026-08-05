@@ -9,6 +9,7 @@
 - [Tecnologías usadas](#tecnologías-usadas)
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Roadmap](#roadmap)
+- [Objetivos de aprendizaje](#objetivos-de-aprendizaje)
 - [Desarrollador](#desarrollador)
 - [Licencia](#licencia)
 
