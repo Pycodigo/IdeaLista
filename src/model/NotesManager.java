@@ -82,4 +82,13 @@ public class NotesManager {
         noteToEdit.setDescription(newDescription);
         return true;
     }
+
+    public ArrayList<Note> getAll() {
+        // Crear una copia de la lista por seguridad.
+        ArrayList<Note> notesCopy = new ArrayList<>();
+        // Meter los datos.
+        notesCopy.addAll(notes);
+
+        return notesCopy;
+    }
 }
