@@ -56,7 +56,13 @@
 🏗️<h3>​​Estructura del proyecto​</h3>🏗️
 <hr/>
 <ul>
-  <li>model/</li>
+  <li>
+    model/
+    <ul>
+      <li>Note.java</li>
+      <li>NotesManager.java</li>
+    </ul>
+  </li>
   <li>controller/</li>
   <li>view/</li>
 </ul>
@@ -65,7 +71,7 @@
 <hr/>
 <p><b>Básico</b></p>
 
-- [ ] Implementar la gestión de apuntes (CRUD).
+- [x] Implementar la gestión de apuntes (CRUD).
 - [ ] Marcar y desmarcar apuntes como favoritos.
 - [ ] Guardar y cargar apuntes desde el almacenamiento.
 - [ ] Crear la interfaz principal.
