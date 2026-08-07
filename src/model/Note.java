@@ -1,0 +1,53 @@
+package model;
+
+import java.time.LocalDateTime;
+
+public class Note {
+    // Atributos de los apuntes.
+    private int id;
+    private String title;
+    private String description;
+    private LocalDateTime date = LocalDateTime.now(); // Fecha de creación.
+    private boolean favorite = false; // Al principio no es favorito.
+
+    // Lo que recibe NotesManager.
+    public Note(int id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
+
+    // Getters.
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    // Setters.
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
+}
