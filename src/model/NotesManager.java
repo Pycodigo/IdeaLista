@@ -48,4 +48,38 @@ public class NotesManager {
         notes.remove(noteToRemove);
         return true;
     }
+
+    // Editar el título de un apunte por id.
+    public boolean changeTitle(int id, String newTitle) {
+        Note noteToEdit = getById(id);
+        int nextUntintledId = 1; // Contandor independiente.
+
+        // Comprobar si el id es nulo.
+        if(noteToEdit == null) {
+            return false;
+        }
+        // Comprobar si el título está vacío.
+        if (newTitle == null || newTitle.isEmpty()) {
+            newTitle = "Sin título " + nextUntintledId;
+        }
+        nextUntintledId++;
+
+        // Modificar el título con el setter.
+        noteToEdit.setTitle(newTitle);
+        return true;
+    }
+
+    // Editar la descripción de un apunte por id.
+    public boolean changeDescription(int id, String newDescription) {
+        Note noteToEdit = getById(id);
+
+        // Comprobar si el id es nulo.
+        if(noteToEdit == null) {
+            return false;
+        }
+
+        // Modificar la descripción con el setter.
+        noteToEdit.setDescription(newDescription);
+        return true;
+    }
 }
