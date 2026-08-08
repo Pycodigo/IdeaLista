@@ -50,4 +50,10 @@ public class Note {
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
     }
+
+    // Convertir el objeto Apunte en una cadena legible.
+    @Override
+    public String toString() {
+        return title + "\n" + description + "\n" + favorite + "\n" + date;
+    }
 }

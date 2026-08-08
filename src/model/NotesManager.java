@@ -22,6 +22,15 @@ public class NotesManager {
         nextId++;
     }
 
+    public ArrayList<Note> getAll() {
+        // Crear una copia de la lista por seguridad.
+        ArrayList<Note> notesCopy = new ArrayList<>();
+        // Meter los datos.
+        notesCopy.addAll(notes);
+
+        return notesCopy;
+    }
+
     // Obtener apunte por id.
     public Note getById(int id) {
         // Pillar cada apunte.
@@ -83,12 +92,17 @@ public class NotesManager {
         return true;
     }
 
-    public ArrayList<Note> getAll() {
-        // Crear una copia de la lista por seguridad.
-        ArrayList<Note> notesCopy = new ArrayList<>();
-        // Meter los datos.
-        notesCopy.addAll(notes);
+    // Marcar o desmarcar favorito por id.
+    public boolean toggleFavorite(int id) {
+        Note noteToEdit = getById(id);
 
-        return notesCopy;
+        // Comprobar si el id es nulo.
+        if(noteToEdit == null) {
+            return false;
+        }
+
+        // Invertir favorito de true -> false, viceversa.
+        noteToEdit.setFavorite(!noteToEdit.isFavorite());
+        return noteToEdit.isFavorite();
     }
 }
