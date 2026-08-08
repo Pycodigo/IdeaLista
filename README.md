@@ -72,7 +72,7 @@
 <p><b>Básico</b></p>
 
 - [x] Implementar la gestión de apuntes (CRUD).
-- [ ] Marcar y desmarcar apuntes como favoritos.
+- [x] Marcar y desmarcar apuntes como favoritos.
 - [ ] Guardar y cargar apuntes desde el almacenamiento.
 - [ ] Crear la interfaz principal.
 - [ ] Mostrar y organizar la lista de apuntes y carpetas.
