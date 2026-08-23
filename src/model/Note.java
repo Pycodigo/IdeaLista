@@ -17,6 +17,15 @@ public class Note {
         this.description = description;
     }
 
+    // Lo que recibe clases como NotesFileManager (necesitan fecha, favoritos, etc).
+    // Reutiliza el primer Note.
+    public Note(int id, String title, String description, LocalDateTime date, boolean favorite) {
+        this(id, title, description);
+
+        this.date = date;
+        this.favorite = favorite;
+    }
+
     // Getters.
     public int getId() {
         return id;
@@ -54,6 +63,6 @@ public class Note {
     // Convertir el objeto Apunte en una cadena legible.
     @Override
     public String toString() {
-        return title + "\n" + description + "\n" + favorite + "\n" + date;
+        return title + "\n" + description + "\n" + date + "\n" + favorite;
     }
 }

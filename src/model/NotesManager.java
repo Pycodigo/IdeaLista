@@ -22,6 +22,28 @@ public class NotesManager {
         nextId++;
     }
 
+    // Añade directamente el apunte (sin generar otro id).
+    public boolean insert(Note note) {
+        if (note == null) {
+            return false;
+        }
+
+        int id = note.getId();
+        Note noteIns = getById(id);
+        // Si el apunte ya existía (el id existe), no ponemos nada.
+        if (noteIns != null) {
+            return false;
+        }
+        // Hacer que los id coincidan.
+        if (id >= nextId) {
+            nextId = id + 1;
+        }
+
+        // Añadir al ArrayList.
+        notes.add(note);
+        return true;
+    }
+
     public ArrayList<Note> getAll() {
         // Crear una copia de la lista por seguridad.
         ArrayList<Note> notesCopy = new ArrayList<>();
