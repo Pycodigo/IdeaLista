@@ -63,6 +63,12 @@
       <li>NotesManager.java</li>
     </ul>
   </li>
+  <li>
+    storage/
+    <ul>
+      <li>NotesFileManager.java</li>
+    </ul>
+  </li>
   <li>controller/</li>
   <li>view/</li>
 </ul>
@@ -73,7 +79,7 @@
 
 - [x] Implementar la gestión de apuntes (CRUD).
 - [x] Marcar y desmarcar apuntes como favoritos.
-- [ ] Guardar y cargar apuntes desde el almacenamiento.
+- [x] Guardar y cargar apuntes desde el almacenamiento.
 - [ ] Crear la interfaz principal.
 - [ ] Mostrar y organizar la lista de apuntes y carpetas.
 - [ ] Permitir ordenar los apuntes.
