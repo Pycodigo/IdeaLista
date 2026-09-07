@@ -80,7 +80,7 @@
 - [x] Implementar la gestión de apuntes (CRUD).
 - [x] Marcar y desmarcar apuntes como favoritos.
 - [x] Guardar y cargar apuntes desde el almacenamiento.
-- [ ] Implementar carpetas y subcarpetas en Model.
+- [x] Implementar carpetas y subcarpetas en Model.
 - [ ] Crear la interfaz principal.
 - [ ] Mostrar y organizar la lista de apuntes y carpetas.
 - [ ] Permitir ordenar los apuntes.
