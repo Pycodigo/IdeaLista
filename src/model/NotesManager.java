@@ -66,6 +66,19 @@ public class NotesManager {
         return null;
     }
 
+    // Pillar todos los apuntes dentro de una carpeta.
+    public ArrayList<Note> getNotesByFolder(int folderId) {
+        ArrayList<Note> notesByFolder = new ArrayList<>();
+
+        for(Note note : notes) {
+            if(folderId == note.getFolderId()) {
+                notesByFolder.add(note);
+            }
+        }
+
+        return notesByFolder;
+    }
+
     // Eliminar un apunte por id.
     public boolean remove(int id) {
         Note noteToRemove = getById(id);

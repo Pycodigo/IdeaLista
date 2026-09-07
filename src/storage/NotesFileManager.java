@@ -25,9 +25,11 @@ public class NotesFileManager {
                 LocalDateTime myDate = note.getDate();
                 // Objeto a texto.
                 String dateText = myDate.format(formatter);
+                // Ahora guarda el id de la carpeta.
                 String noteLine = note.getId() + "\u0001" + 
                 note.getTitle() + "\u0001" + note.getDescription() 
-                + "\u0001" + dateText + "\u0001" + note.isFavorite();
+                + "\u0001" + dateText + "\u0001" + note.isFavorite()
+                + "\u0001" + note.getFolderId();
 
                 bw.write(noteLine);
                 bw.newLine();
@@ -60,8 +62,10 @@ public class NotesFileManager {
                 LocalDateTime noteDate = LocalDateTime.parse(date, formatter);
                 String favorite = noteData[4];
                 boolean noteFavorite = Boolean.parseBoolean(favorite);
+                String folder = noteData[5];
+                int folderId = Integer.parseInt(folder);
 
-                Note note = new Note(noteId, title, description, noteDate, noteFavorite);
+                Note note = new Note(noteId, title, description, noteDate, noteFavorite, folderId);
                 // Añadir a la lista para cargar.
                 notesLoaded.add(note);
             }
