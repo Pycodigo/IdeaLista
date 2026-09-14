@@ -77,14 +77,20 @@
 <hr/>
 <p><b>Básico</b></p>
 
+- [x] Separar correctamente la lógica de negocio de la interfaz (arquitectura MVC).
 - [x] Implementar la gestión de apuntes (CRUD).
 - [x] Marcar y desmarcar apuntes como favoritos.
 - [x] Guardar y cargar apuntes desde el almacenamiento.
 - [x] Implementar carpetas y subcarpetas en Model.
 - [ ] Crear la interfaz principal.
+  - [x] Cabecera.
+  - [ ] Principal (archivos y apuntes tipo 'cajitas').
+  - [ ] Acceso rápido (Izquierda del principal).
+  - [ ] Subprincipal (cambiar entre carpetas y subcarpetas).
+  - [ ] Hacerlo todo bonito visualmente.
+- [ ] Conectar controlador con modelo y vista.
 - [ ] Mostrar y organizar la lista de apuntes y carpetas.
 - [ ] Permitir ordenar los apuntes.
-- [ ] Separar correctamente la lógica de negocio de la interfaz (arquitectura MVC).
 <p><b>A futuro</b></p>
 
 - [ ] Añadir modo oscuro.

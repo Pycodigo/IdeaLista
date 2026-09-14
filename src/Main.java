@@ -1,13 +1,27 @@
-import java.io.File;
-import java.util.ArrayList;
-
-import model.Note;
-import model.NotesManager;
-import storage.NotesFileManager;
+import view.MainView;
 
 public class Main {
     public static void main(String[] args) {
-        // Obtener separador para cada (Windows, Mac, Linux...).
+        // Llamar al MainView.
+        new MainView();
+    }
+}
+
+
+
+
+/* Prueba 1.
+    manager.add("Hola mundo", "Lo normal");
+    manager.add("Prueba", "¿Está en true favoritos?");
+    manager.toggleFavorite(2);
+
+    for (Note note : manager.getAll()) {
+        System.out.println(note.toString());
+    }
+*/
+
+/*Prueba 2.
+// Obtener separador para cada (Windows, Mac, Linux...).
         String fs = File.separator;
         // Obtener carpeta del usuario (para evitar problemas con el tipo de sistema).
         final String NOTES_PATH = new File ("").getAbsolutePath() + fs + "src" + fs + "YourNotes" + fs + "notes.txt";
@@ -37,18 +51,4 @@ public class Main {
         manager.add("EEEEEE", "EEEEEEEEEEEEE");
 
         ArrayList<Note> notesToSave = manager.getAll();
-        fm.saveNotes(notesToSave, NOTES_PATH);
-    }
-}
-
-
-
-/* Prueba 1.
-    manager.add("Hola mundo", "Lo normal");
-    manager.add("Prueba", "¿Está en true favoritos?");
-    manager.toggleFavorite(2);
-
-    for (Note note : manager.getAll()) {
-        System.out.println(note.toString());
-    }
-*/
+        fm.saveNotes(notesToSave, NOTES_PATH); */
