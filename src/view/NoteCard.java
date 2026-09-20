@@ -1,4 +1,4 @@
-// Cajita de carpeta.
+// Cajita de apunte.
 package view;
 
 import javax.swing.*;
@@ -6,26 +6,26 @@ import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class FolderCard extends PaintCard {
+public class NoteCard extends PaintCard {
     // Atributos (para que los reciba controller).
     private JButton favoriteBtn;
     private JButton pointsBtn;
-    private int folderId;
+    // Guardar id.
+    private int noteId;
 
-    public FolderCard(int folderId, String icon, boolean favorite, String name, int subfolderCnt, int noteCtn, LocalDateTime date) {
-        // Conseguir id.
-        this.folderId = folderId;
+    public NoteCard(int noteId, boolean favorite, String title, String description, LocalDateTime date) {
+        this.noteId = noteId;
         // Borde principal.
         setLayout(new BorderLayout());
 
         // Transformar la cadena en imagen.
-        ImageIcon iconImg = new ImageIcon(getClass().getResource(icon));
+        ImageIcon iconImg = new ImageIcon(getClass().getResource("/icons/apunte.png"));
         // Ajustamos la imagen.
         Image scaledImg = iconImg.getImage().getScaledInstance(48, 48, Image.SCALE_SMOOTH);
         // La reconvertimos a icono.
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
-        JLabel iconFolder = new JLabel(scaledIcon);
-        add(iconFolder, BorderLayout.WEST);
+        JLabel iconNote = new JLabel(scaledIcon);
+        add(iconNote, BorderLayout.WEST);
 
         // Botones con panel nuevo.
         JPanel btnsPanel = new JPanel();
@@ -54,21 +54,28 @@ public class FolderCard extends PaintCard {
         textPanel.setOpaque(false);
         // Caja vertical.
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-        JLabel nameText = new JLabel(name);
-        JLabel cntText = new JLabel(subfolderCnt + " carpetas, " + noteCtn + " apuntes");
+        JLabel nameText = new JLabel(title);
+        // Poner solo los primeros caracteres de la descripción (si es más de 20 caracteres).
+        String desCutted = "";
+        if (description.length() > 20) {
+            desCutted = description.substring(0, 20) + "...";
+        } else {
+            desCutted = description;
+        }
+        JLabel descriptionText = new JLabel(desCutted);
         // Formatear fecha a formato 'dia/mes/año'.
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String dateFormatted = date.format(format);
         JLabel dateText = new JLabel("Fecha: " + dateFormatted);
         textPanel.add(nameText);
-        textPanel.add(cntText);
+        textPanel.add(descriptionText);
         textPanel.add(dateText);
         add(textPanel, BorderLayout.SOUTH);
     }
 
     // Getters.
-    public int getFolderId() {
-        return folderId;
+    public int getNoteId() {
+        return noteId;
     }
     public JButton getFavoriteBtn() {
         return favoriteBtn;

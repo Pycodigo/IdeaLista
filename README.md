@@ -84,12 +84,17 @@
 - [x] Implementar carpetas y subcarpetas en Model.
 - [ ] Crear la interfaz principal.
   - [x] Cabecera.
-  - [ ] Principal (archivos y apuntes tipo 'cajitas').
+  - [x] Principal (archivos y apuntes tipo 'cajitas').
   - [ ] Acceso rápido (Izquierda del principal).
-  - [ ] Subprincipal (cambiar entre carpetas y subcarpetas).
+  - [x] Subprincipal (cambiar entre carpetas y subcarpetas).
+  - [x] Acceder a los apuntes y editarlos.
+  - [x] Volver a lo anterior.
+  - [x] Marcar como 'favorito'.
+  - [ ] Eliminar carpetas (con el interior) y apuntes.
+  - [ ] Mover carpetas y apuntes de lugar.
   - [ ] Hacerlo todo bonito visualmente.
 - [ ] Conectar controlador con modelo y vista.
-- [ ] Mostrar y organizar la lista de apuntes y carpetas.
+- [x] Mostrar y organizar la lista de apuntes y carpetas.
 - [ ] Permitir ordenar los apuntes.
 <p><b>A futuro</b></p>
 

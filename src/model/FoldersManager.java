@@ -72,7 +72,7 @@ public class FoldersManager {
         return foldersCopy;
     }
 
-    // Obtener apunte por id.
+    // Obtener carpeta por id.
     public Folder getById(int id) {
         // Pillar cada carpeta.
         for(Folder folder: folders) {
@@ -85,22 +85,17 @@ public class FoldersManager {
         return null;
     }
 
-    // Obtener todas las subcarpetas.
-    public ArrayList<Folder> getAllSubfolders(int id) {
-        Folder folder = getById(id);
-        ArrayList<Folder> subfolders = new ArrayList<>();
-        if(folder == null) {
-            return subfolders;
-        }
+    // Pillar todas las carpetas.
+    public ArrayList<Folder> getByFatherId(int fatherId) {
+        ArrayList<Folder> foldersByFather = new ArrayList<>();
 
-        for(int subfolderId : folder.getSubfolderIds()) {
-            Folder subfolder = getById(subfolderId);
-            // Comprobar que corresponde.
-            if(subfolder != null) {
-                subfolders.add(subfolder);
+        for(Folder folder : folders) {
+            if(fatherId == folder.getFatherId()) {
+                foldersByFather.add(folder);
             }
         }
-        return subfolders;
+
+        return foldersByFather;
     }
 
     // Comprobar si puede eliminarse toda la carpeta (junto a su interior).
@@ -205,7 +200,7 @@ public class FoldersManager {
 
         // Actualizar carpetas y subcarpetas.
         // Y comprobar que no sean los padres la raíz.
-        if(folderId != -1) {
+        if(fatherId != -1) {
             oldFather.removeSubfolderId(folderId);
         }
         if(newFatherId != -1) {
@@ -233,5 +228,33 @@ public class FoldersManager {
         // Modificar el nombre con el setter.
         folderToEdit.setName(newName);
         return true;
+    }
+
+    // Marcar o desmarcar favorito por id.
+    public boolean toggleFavorite(int id) {
+        Folder folderToEdit = getById(id);
+
+        // Comprobar si el id es nulo.
+        if(folderToEdit == null) {
+            return false;
+        }
+
+        // Invertir favorito de true -> false, viceversa.
+        folderToEdit.setFavorite(!folderToEdit.isFavorite());
+        return true;
+    }
+
+    // Setter.
+    public void setFolders(ArrayList<Folder> folders) {
+        this.folders = folders;
+    }
+
+    // Actualizar id.
+    public void updateNextId() {
+        for (Folder folder : folders) {
+            if (folder.getId() >= nextId) {
+                nextId = folder.getId() + 1;
+            }
+        }
     }
 }

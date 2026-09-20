@@ -11,7 +11,7 @@ public class Folder {
     private int fatherId = -1;
     private boolean favorite = false;
     private LocalDateTime date = LocalDateTime.now(); // Fecha de creación.
-    private String icon = "icons/carpeta.png";
+    private String icon = "/icons/carpeta.png";
 
 
     // Lo que recibe FoldersManager.

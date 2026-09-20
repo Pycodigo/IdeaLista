@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import model.Note;
 
@@ -25,9 +26,11 @@ public class NotesFileManager {
                 LocalDateTime myDate = note.getDate();
                 // Objeto a texto.
                 String dateText = myDate.format(formatter);
+                // Poner descripción con saltos de línea.
+                String description = note.getDescription().replace("\n", "\\n");
                 // Ahora guarda el id de la carpeta.
                 String noteLine = note.getId() + "\u0001" + 
-                note.getTitle() + "\u0001" + note.getDescription() 
+                note.getTitle() + "\u0001" + description 
                 + "\u0001" + dateText + "\u0001" + note.isFavorite()
                 + "\u0001" + note.getFolderId();
 
@@ -51,13 +54,20 @@ public class NotesFileManager {
             // Lee todos los apuntes (al estar en el while), y para cuando es null.
             while ((noteLine = br.readLine()) != null) {
                 // Obtener cada parte (id, título) por separado.
-                String [] noteData = noteLine.split("\u0001");
+                String[] noteData = noteLine.split("\u0001", -1);
+
+                System.out.println("LÍNEA: " + noteLine);
+                System.out.println("CAMPOS: " + noteData.length);
+
+                for (String data : noteData) {
+                    System.out.println("[" + data + "]");
+                }
 
                 // Pillar datos para pasarlos.
                 String id = noteData[0];
                 int noteId = Integer.parseInt(id);
                 String title = noteData[1];
-                String description = noteData[2];
+                String description = noteData[2].replace("\\n", "\n");
                 String date = noteData[3];
                 LocalDateTime noteDate = LocalDateTime.parse(date, formatter);
                 String favorite = noteData[4];

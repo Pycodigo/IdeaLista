@@ -9,13 +9,16 @@ public class NotesManager {
     private int nextId = 1; // ID único de cada apunte.
     private ArrayList<Note> notes = new ArrayList<>(); // Lista con todos los datos de los apuntes.
 
-    public void add(String title, String description) {
+    public void add(String title, String description, int folderId) {
         // Comprobar si el título está vacío.
         if (title == null || title.isEmpty()) {
             title = "Sin título " + nextId;
         }
+
         // Crear un nuevo apunte.
         Note noteNew = new Note(nextId, title, description);
+        noteNew.setFolderId(folderId);
+
         // Añadir al ArrayList.
         notes.add(noteNew);
 
@@ -96,7 +99,6 @@ public class NotesManager {
     // Editar el título de un apunte por id.
     public boolean changeTitle(int id, String newTitle) {
         Note noteToEdit = getById(id);
-        int nextUntintledId = 1; // Contandor independiente.
 
         // Comprobar si el id es nulo.
         if(noteToEdit == null) {
@@ -104,9 +106,8 @@ public class NotesManager {
         }
         // Comprobar si el título está vacío.
         if (newTitle == null || newTitle.isEmpty()) {
-            newTitle = "Sin título " + nextUntintledId;
+            newTitle = "Sin título " + id;
         }
-        nextUntintledId++;
 
         // Modificar el título con el setter.
         noteToEdit.setTitle(newTitle);
@@ -138,6 +139,20 @@ public class NotesManager {
 
         // Invertir favorito de true -> false, viceversa.
         noteToEdit.setFavorite(!noteToEdit.isFavorite());
-        return noteToEdit.isFavorite();
+        return true;
+    }
+
+    // Setter.
+    public void setNotes(ArrayList<Note> notes) {
+        this.notes = notes;
+    }
+
+    // Actualizar el id.
+    public void updateNextId() {
+        for (Note note : notes) {
+            if (note.getId() >= nextId) {
+                nextId = note.getId() + 1;
+            }
+        }
     }
 }
