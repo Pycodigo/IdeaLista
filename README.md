@@ -138,7 +138,8 @@
 <br/>
 🤵<h3>Desarrollador</h3>🤵
 <hr/>
-<p><img src="https://github.com/user-attachments/assets/d02d9333-4b01-4801-ba56-fa7795e27da9" widht="300" height="300"/><br/><sub>Alonso García Castiñeira</sub></p>
+<p><b>Pycod</b></p>
+<p>Única persona a cargo de todo.</p>
 <br/>
 <h3><u>Licencia</u></h3>
 <hr/>
