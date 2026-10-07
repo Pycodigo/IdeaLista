@@ -57,20 +57,42 @@
 <hr/>
 <ul>
   <li>
+    controller/
+    <ul>
+      <li>MainController.java</li>
+      <li>ScreenController.java</li>
+    </ul>
+  </li>
+  <li>
     model/
     <ul>
       <li>Note.java</li>
+      <li>Folder.java</li>
+      <li>FoldersManager.java</li>
       <li>NotesManager.java</li>
+      <li>ScreenModels.java</li>
     </ul>
   </li>
   <li>
     storage/
     <ul>
       <li>NotesFileManager.java</li>
+      <li>FoldersFileManager.java</li>
+      <li>ScreenFileManager.java</li>
     </ul>
   </li>
-  <li>controller/</li>
-  <li>view/</li>
+  <li>view/
+    <ul>
+      <li>ContentPanel.java</li>
+      <li>FolderCard.java</li>
+      <li>NoteCard.java</li>
+      <li>NotePanel.java</li>
+      <li>NoteView.java</li>
+      <li>PaintCard.java</li>
+      <li>MainView.java</li>
+    </ul>
+  </li>
+  <li>Main.java</li>
 </ul>
 <br/>
 🔨<h3>​​Roadmap​</h3>🔨
