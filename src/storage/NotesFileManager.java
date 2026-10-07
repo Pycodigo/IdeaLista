@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 import model.Note;
 
@@ -26,7 +25,7 @@ public class NotesFileManager {
                 LocalDateTime myDate = note.getDate();
                 // Objeto a texto.
                 String dateText = myDate.format(formatter);
-                // Poner descripción con saltos de línea.
+                // Guardar la descripción con saltos de línea.
                 String description = note.getDescription().replace("\n", "\\n");
                 // Ahora guarda el id de la carpeta.
                 String noteLine = note.getId() + "\u0001" + 
@@ -55,13 +54,6 @@ public class NotesFileManager {
             while ((noteLine = br.readLine()) != null) {
                 // Obtener cada parte (id, título) por separado.
                 String[] noteData = noteLine.split("\u0001", -1);
-
-                System.out.println("LÍNEA: " + noteLine);
-                System.out.println("CAMPOS: " + noteData.length);
-
-                for (String data : noteData) {
-                    System.out.println("[" + data + "]");
-                }
 
                 // Pillar datos para pasarlos.
                 String id = noteData[0];

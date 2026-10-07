@@ -11,8 +11,17 @@ public class NotesManager {
 
     public void add(String title, String description, int folderId) {
         // Comprobar si el título está vacío.
-        if (title == null || title.isEmpty()) {
-            title = "Sin título " + nextId;
+        if(title == null || title.isEmpty()) {
+            String baseTitle = "Sin título";
+            String candidate = baseTitle;
+            ArrayList<Note> siblings = getNotesByFolder(folderId);
+            int cntNote = 2;
+            int noId = -6; // Id que no existe.
+            while(titleExists(siblings, candidate, noId)) {
+                candidate = baseTitle + " " + cntNote;
+                cntNote++;
+            }
+            title = candidate;
         }
 
         // Crear un nuevo apunte.
@@ -23,6 +32,19 @@ public class NotesManager {
         notes.add(noteNew);
 
         nextId++;
+    }
+
+    // Comprobar títulos.
+    private boolean titleExists(ArrayList<Note> siblings, String title, int ignoreId) {
+        for (Note sibling : siblings) {
+            if (sibling.getTitle().equals(title) && sibling.getId() != ignoreId) {
+                // Coincide título.
+                return true;
+            }
+        }
+
+        // No coincidió ninguno.
+        return false;
     }
 
     // Añade directamente el apunte (sin generar otro id).
@@ -104,9 +126,18 @@ public class NotesManager {
         if(noteToEdit == null) {
             return false;
         }
+
         // Comprobar si el título está vacío.
         if (newTitle == null || newTitle.isEmpty()) {
-            newTitle = "Sin título " + id;
+            ArrayList<Note> siblings = getNotesByFolder(noteToEdit.getFolderId());
+            String baseTitle = "Sin título";
+            String candidate = baseTitle;
+            int cntNote = 2;
+            while(titleExists(siblings, candidate, id)) {
+                candidate = baseTitle + " " + cntNote;
+                cntNote++;
+            }
+            newTitle = candidate;
         }
 
         // Modificar el título con el setter.

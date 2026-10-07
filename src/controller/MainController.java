@@ -143,4 +143,18 @@ public class MainController {
             notesPath
         );
     }
+
+    // Poder editar carpetas.
+    public boolean renameFolder(int folderId, String name) {
+        boolean renamed = foldersManager.rename(folderId, name);
+
+        if (renamed) {
+            foldersFileManager.saveFolders(
+                foldersManager.getAll(),
+                foldersPath
+            );
+        }
+
+        return renamed;
+    }
 }

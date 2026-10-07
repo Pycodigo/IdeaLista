@@ -227,6 +227,27 @@ public class ContentPanel extends JPanel {
                 mc.toggleFolderFavorite(folderCard.getFolderId());
                 refresh();
             });
+            // Crear y abrir menú hamburguesa.
+            JPopupMenu menu = new JPopupMenu();
+            JMenuItem op1 = new JMenuItem("Renombrar");
+            JMenuItem op2 = new JMenuItem("Eliminar");
+            menu.add(op1);
+            menu.add(op2);
+            folderCard.getPointsBtn().addActionListener(e -> {
+                menu.show(folderCard.getPointsBtn(), 0, folderCard.getPointsBtn().getHeight());
+            });
+            op1.addActionListener(e -> {
+                String newFolderName = JOptionPane.showInputDialog(
+                    this,
+                    "Nuevo nombre:",
+                    folder.getName()
+                );
+                mc.renameFolder(folder.getId(), newFolderName);
+                refresh();
+            });
+            op2.addActionListener(e -> {
+                
+            });
 
             // Entrar en carpeta.
             folderCard.addMouseListener(new MouseAdapter() {
@@ -297,7 +318,11 @@ public class ContentPanel extends JPanel {
         // Añadir todo al panel principal.
         add(topPanel, BorderLayout.NORTH);
         add(folderBoxPanel, BorderLayout.CENTER);
-        add(noteBoxPanel, BorderLayout.SOUTH);
+        if(folders.isEmpty()) {
+            add(noteBoxPanel, BorderLayout.CENTER);
+        } else {
+            add(noteBoxPanel, BorderLayout.SOUTH);
+        }
 
         revalidate();
         repaint();

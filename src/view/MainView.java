@@ -1,18 +1,20 @@
 // Ventana principal con todo.
 package view;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-
 import controller.MainController;
+import controller.ScreenController;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import javax.swing.JFrame;
 import model.Note;
 
 public class MainView {
     private JFrame frame;
     private MainController mc;
+    private ScreenController sc;
     private ContentPanel contentP;
     private NotePanel noteP;
+    private TopPanel tp;
 
     public MainView() {
         // Crear controlador.
@@ -21,16 +23,22 @@ public class MainView {
         // Crear ventana principal con título.
         frame = new JFrame();
         frame.setTitle("IdeaLista");
-        frame.setSize(800, 600);
+        frame.setSize(1200, 800);
+        // Poner un mínimo a la ventana.
+        frame.setMinimumSize(new Dimension(500, 600));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); // Centrar en la pantalla.
 
         // Importar cabecera y ponerla arriba.
-        TopPanel tp = new TopPanel();
+        tp = new TopPanel();
         frame.add(tp, BorderLayout.NORTH);
 
         // Importar panel principal y ponerlo en el centro.
         contentP = new ContentPanel(mc, this);
         frame.add(contentP, BorderLayout.CENTER);
+
+        // Importar controlador de la pantalla.
+        sc = new ScreenController(this);
 
         // Mostrar.
         frame.setVisible(true);
@@ -56,5 +64,16 @@ public class MainView {
 
         frame.revalidate();
         frame.repaint();
+    }
+
+    public void changeWindowSize(int width, int height) {
+        // Quitar pantalla completa.
+        frame.setExtendedState(JFrame.NORMAL); 
+        frame.setSize(width, height);
+        frame.setLocationRelativeTo(null); 
+    }
+
+    public TopPanel getTopPanel() {
+        return tp;
     }
 }

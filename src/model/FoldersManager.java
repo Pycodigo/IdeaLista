@@ -12,7 +12,16 @@ public class FoldersManager {
     public boolean add(String name, int fatherId) {
         // Comprobar si la carpeta está vacía.
         if(name == null || name.isEmpty()) {
-            name = "Nueva carpeta " + nextId;
+            String baseName = "Nueva carpeta";
+            String candidate = baseName;
+            ArrayList<Folder> siblings = getByFatherId(fatherId);
+            int cntFolder = 2;
+            int noId = -6; // Id que no existe.
+            while(nameExists(siblings, candidate, noId)) {
+                candidate = baseName + " " + cntFolder;
+                cntFolder++;
+            }
+            name = candidate;
         }
 
         // Crear nueva carpeta.
@@ -30,6 +39,19 @@ public class FoldersManager {
 
         nextId++;
         return true;
+    }
+
+    // Comprobar nombres.
+    private boolean nameExists(ArrayList<Folder> siblings, String name, int ignoreId) {
+        for (Folder sibling : siblings) {
+            if (sibling.getName().equalsIgnoreCase(name) && sibling.getId() != ignoreId) {
+                // Coincide nombre.
+                return true;
+            }
+        }
+
+        // No coincidió ninguno.
+        return false;
     }
 
     // Añade directamente la carpeta (sin generar otro id).
@@ -223,6 +245,12 @@ public class FoldersManager {
         if (newName == null || newName.isEmpty()) {
             // Le dejamos el nombre anterior.
             newName = folderToEdit.getName();
+        } 
+        
+        // Pillamos todas las carpetas actuales.
+        ArrayList<Folder> siblings = getByFatherId(folderToEdit.getFatherId());
+        if(nameExists(siblings, newName, id)) {
+            return false;
         }
 
         // Modificar el nombre con el setter.
