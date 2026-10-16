@@ -104,6 +104,19 @@ public class NotesManager {
         return notesByFolder;
     }
 
+    // Pillar todos los apuntes favoritos.
+    public ArrayList<Note> getFavoriteNotes() {
+        ArrayList<Note> notesFavorites = new ArrayList<>();
+
+        for(Note note : notes) {
+            if(note.isFavorite()) {
+                notesFavorites.add(note);
+            }
+        }
+
+        return notesFavorites;
+    }
+
     // Eliminar un apunte por id.
     public boolean remove(int id) {
         Note noteToRemove = getById(id);

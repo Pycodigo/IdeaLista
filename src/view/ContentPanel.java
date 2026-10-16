@@ -1,16 +1,14 @@
 // Panel principal con las carpetas y apuntes.
 package view;
 
-import javax.swing.*;
-
 import controller.MainController;
-import model.Folder;
-import model.Note;
-
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.*;
+import model.Folder;
+import model.Note;
 
 public class ContentPanel extends JPanel {
     // Recibir controlador.
@@ -226,6 +224,7 @@ public class ContentPanel extends JPanel {
             folderCard.getFavoriteBtn().addActionListener(e -> {
                 mc.toggleFolderFavorite(folderCard.getFolderId());
                 refresh();
+                mv.getQuickPanel().getFavoritesPanel().refresh();
             });
             // Crear y abrir menú hamburguesa.
             JPopupMenu menu = new JPopupMenu();
@@ -293,6 +292,7 @@ public class ContentPanel extends JPanel {
             noteCard.getFavoriteBtn().addActionListener(e -> {
                 mc.toggleNoteFavorite(noteCard.getNoteId());
                 refresh();
+                mv.getQuickPanel().getFavoritesPanel().refresh();
             });
 
             // Abrir apunte.

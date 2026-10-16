@@ -1,10 +1,10 @@
 // Cajita de apunte.
 package view;
 
-import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.*;
 
 public class NoteCard extends PaintCard {
     // Atributos (para que los reciba controller).

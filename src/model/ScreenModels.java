@@ -35,7 +35,7 @@ public class ScreenModels {
 
         // Lista de resoluciones estándar a evaluar.
         int[][] estandars = {
-            {500, 600}, // Tamaño mínimo.
+            {600, 600}, // Tamaño mínimo.
             {800, 600},
             {1024, 768},
             {1200, 800}, // Tamaño por defecto.

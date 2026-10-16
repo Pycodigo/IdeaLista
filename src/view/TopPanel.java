@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class TopPanel extends JPanel {
     // Atributos (para que los reciba controller).
-    private JButton folderButton;
+    private JButton markerButton;
     private JButton searchButton;
     private JButton favoritesButton;
     private JButton optionsBtn;
@@ -24,11 +24,11 @@ public class TopPanel extends JPanel {
         // Layout para poner los iconos con el mismo tamaño.
         iconPanel.setLayout(new FlowLayout());
         // Botones (con sus iconos).
-        folderButton = new JButton("📁");
+        markerButton = new JButton("🏷️");
         searchButton = new JButton("🔍");
         favoritesButton = new JButton("⭐");
         // Añadir.
-        iconPanel.add(folderButton);
+        iconPanel.add(markerButton);
         iconPanel.add(searchButton);
         iconPanel.add(favoritesButton);
         add(iconPanel, BorderLayout.WEST);
@@ -71,8 +71,8 @@ public class TopPanel extends JPanel {
     }
 
     // Getters.
-    public JButton getFolderButton() {
-        return folderButton;
+    public JButton getMarkerButton() {
+        return markerButton;
     }
     public JButton getSearchButton() {
         return searchButton;

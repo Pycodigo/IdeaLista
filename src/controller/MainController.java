@@ -2,7 +2,6 @@ package controller;
 
 import java.io.File;
 import java.util.ArrayList;
-
 import model.Folder;
 import model.FoldersManager;
 import model.Note;
@@ -55,6 +54,9 @@ public class MainController {
     public int getCurrentFolderId() {
         return folderId;
     }
+    public ArrayList<Folder> getFoldersByFavorites() {
+        return foldersManager.getFavoriteFolders();
+    }
     // Volver a una carpeta anterior.
     public void goToFolder(int folderId) {
         this.folderId = folderId;
@@ -83,6 +85,9 @@ public class MainController {
     // Conseguir apuntes.
     public int getNoteCount(int folderId) {
         return notesManager.getNotesByFolder(folderId).size();
+    }
+    public ArrayList<Note> getNotesByFavorites() {
+        return notesManager.getFavoriteNotes();
     }
     public Note getNote(int noteId) {
         return notesManager.getById(noteId);

@@ -120,6 +120,19 @@ public class FoldersManager {
         return foldersByFather;
     }
 
+    // Pillar todas las carpetas favoritos.
+    public ArrayList<Folder> getFavoriteFolders() {
+        ArrayList<Folder> foldersFavorites = new ArrayList<>();
+
+        for(Folder folder : folders) {
+            if(folder.isFavorite()) {
+                foldersFavorites.add(folder);
+            }
+        }
+
+        return foldersFavorites;
+    }
+
     // Comprobar si puede eliminarse toda la carpeta (junto a su interior).
     public boolean canRemove(int id) {
         Folder folder = getById(id);
