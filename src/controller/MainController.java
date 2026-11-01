@@ -50,6 +50,15 @@ public class MainController {
         return notesManager.getNotesByFolder(folderId);
     }
 
+    // Conseguir todas las carpetas.
+    public ArrayList<Folder> getAllFolders() {
+        return foldersManager.getAll();
+    }
+    // Conseguir la subcarpetas.
+    public ArrayList<Folder> getSubfolders(int fatherId) {
+        return foldersManager.getByFatherId(fatherId);
+    }
+
     // Conseguir carpeta actual.
     public int getCurrentFolderId() {
         return folderId;
@@ -91,6 +100,14 @@ public class MainController {
     }
     public Note getNote(int noteId) {
         return notesManager.getById(noteId);
+    }
+    // Obtener apuntes en carpeta.
+    public ArrayList<Note> getNotesByFolder(int folderId) {
+        return notesManager.getNotesByFolder(folderId);
+    }
+    // Conseguir todos los apuntes.
+    public ArrayList<Note> getAllNotes() {
+        return notesManager.getAll();
     }
 
     // Crear carpeta o apunte y guardarlos.
@@ -161,5 +178,65 @@ public class MainController {
         }
 
         return renamed;
+    }
+
+    // Eliminar todos los apuntes de una carpeta y sus descendientes.
+    private void removeNotesRecursive(int folderId) {
+        // Eliminar apuntes de la carpeta actual.
+        ArrayList<Note> notes = notesManager.getNotesByFolder(folderId);
+
+        for (Note note : notes) {
+            notesManager.remove(note.getId());
+        }
+
+        // Recorrer las subcarpetas.
+        ArrayList<Folder> subfolders = getSubfolders(folderId);
+
+        for (Folder subfolder : subfolders) {
+            removeNotesRecursive(subfolder.getId());
+        }
+    }
+    
+    // Eliminar carpetas y apuntes, uno a uno.
+    public boolean removeNote(int noteId) {
+        // Comprobar y eliminar el apunte.
+        boolean removed = notesManager.remove(noteId);
+
+        if (removed) {
+            // Guardar los cambios.
+            notesFileManager.saveNotes(
+                notesManager.getAll(),
+                notesPath
+            );
+        }
+
+        return removed;
+    }
+    public boolean removeFolder(int folderId) {
+        // Comprobar si se puede eliminar.
+        if (!foldersManager.canRemove(folderId)) {
+            return false;
+        }
+
+        // Eliminar todos los apuntes de la carpeta y sus descendientes.
+        removeNotesRecursive(folderId);
+
+        // Eliminar la carpeta y todas sus subcarpetas.
+        boolean removed = foldersManager.remove(folderId);
+
+        if (removed) {
+            // Guardar los cambios.
+            foldersFileManager.saveFolders(
+                foldersManager.getAll(),
+                foldersPath
+            );
+
+            notesFileManager.saveNotes(
+                notesManager.getAll(),
+                notesPath
+            );
+        }
+
+        return removed;
     }
 }

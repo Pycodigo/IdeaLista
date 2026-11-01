@@ -50,6 +50,7 @@ public class MainView {
         qc = new QuickController(this);
 
         // Conectar panel con controlador.
+        quickP.getSearchPanel().setQuickController(qc);
         quickP.getFavoritesPanel().setQuickController(qc);
 
         // Mostrar.
@@ -59,10 +60,14 @@ public class MainView {
     public void openNote(int noteId) {
         Note note = mc.getNote(noteId);
 
+        // Elimina primero para evitar errores.
+        if (noteP != null) {
+            frame.remove(noteP);
+        }
+
         noteP = new NotePanel(note, this, mc);
 
         frame.remove(contentP);
-        frame.remove(noteP);
 
         frame.add(noteP, BorderLayout.CENTER);
 
@@ -72,7 +77,9 @@ public class MainView {
 
     public void showContent() {
         // Elimina para evitar errores.
-        frame.remove(noteP);
+        if (noteP != null) {
+            frame.remove(noteP);
+        }
 
         contentP.refresh();
         frame.add(contentP, BorderLayout.CENTER);

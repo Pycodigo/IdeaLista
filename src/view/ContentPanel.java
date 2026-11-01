@@ -70,6 +70,7 @@ public class ContentPanel extends JPanel {
                 folderBtn.addActionListener(e -> {
                     mc.enterFolder(folder.getId());
                     refresh();
+                    
                 });
 
                 breadcrumbPanel.add(folderBtn);
@@ -176,6 +177,7 @@ public class ContentPanel extends JPanel {
             if (name != null) {
                 mc.createFolder(name);
                 refresh();
+                mv.getQuickPanel().getSearchPanel().refresh();
             }
         });
 
@@ -184,6 +186,7 @@ public class ContentPanel extends JPanel {
             Note note = mc.createNote();
 
             mv.openNote(note.getId());
+            mv.getQuickPanel().getSearchPanel().refresh();
         });
 
         // Si no hay absolutamente nada, mostrar solo los botones grandes.
@@ -243,9 +246,12 @@ public class ContentPanel extends JPanel {
                 );
                 mc.renameFolder(folder.getId(), newFolderName);
                 refresh();
+                mv.getQuickPanel().getSearchPanel().refresh();
             });
             op2.addActionListener(e -> {
-                
+                mc.removeFolder(folder.getId());
+                refresh();
+                mv.getQuickPanel().getSearchPanel().refresh();
             });
 
             // Entrar en carpeta.
@@ -293,6 +299,19 @@ public class ContentPanel extends JPanel {
                 mc.toggleNoteFavorite(noteCard.getNoteId());
                 refresh();
                 mv.getQuickPanel().getFavoritesPanel().refresh();
+            });
+
+            // Crear y abrir menú hamburguesa.
+            JPopupMenu menu = new JPopupMenu();
+            JMenuItem op1 = new JMenuItem("Eliminar");
+            menu.add(op1);
+            noteCard.getPointsBtn().addActionListener(e -> {
+                menu.show(noteCard.getPointsBtn(), 0, noteCard.getPointsBtn().getHeight());
+            });
+            op1.addActionListener(e -> {
+                mc.removeNote(note.getId());
+                refresh();
+                mv.getQuickPanel().getSearchPanel().refresh();
             });
 
             // Abrir apunte.

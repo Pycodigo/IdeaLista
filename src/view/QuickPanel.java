@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 public class QuickPanel extends JPanel {
     private CardLayout cards;
+    private SearchPanel sp;
     private FavoritesPanel favP;
     // Evitar errores con las letras.
     private static final String MARKER_TEXT = "Marcadores";
@@ -33,19 +34,25 @@ public class QuickPanel extends JPanel {
         searchCard.setOpaque(false);
         favoriteCard.setOpaque(false);
 
+        searchCard.setLayout(new BorderLayout());
         favoriteCard.setLayout(new BorderLayout());
         
         JLabel markerLbl = new JLabel("Marcadores");
         JLabel searchLbl = new JLabel("Buscar");
         JLabel favLbl = new JLabel("Favoritos");
+        markerLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        searchLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        favLbl.setFont(new Font("Arial", Font.BOLD, 18));
         markerLbl.setForeground(Color.WHITE);
         searchLbl.setForeground(Color.WHITE);
         favLbl.setForeground(Color.WHITE);
         markerCard.add(markerLbl);
-        searchCard.add(searchLbl);
+        searchCard.add(searchLbl, BorderLayout.NORTH);
         favoriteCard.add(favLbl, BorderLayout.NORTH);
 
+        sp = new SearchPanel(mc);
         favP = new FavoritesPanel(mc);
+        searchCard.add(sp, BorderLayout.CENTER);
         favoriteCard.add(favP, BorderLayout.CENTER);
 
         add(markerCard, MARKER_TEXT);
@@ -65,6 +72,9 @@ public class QuickPanel extends JPanel {
     }
 
     // Getters.
+    public SearchPanel getSearchPanel() {
+        return sp;
+    }
     public FavoritesPanel getFavoritesPanel() {
         return favP;
     }

@@ -10,7 +10,7 @@ public class Main {
 
 
 
-/* Prueba 1.
+/* Prueba 1
     manager.add("Hola mundo", "Lo normal");
     manager.add("Prueba", "¿Está en true favoritos?");
     manager.toggleFavorite(2);

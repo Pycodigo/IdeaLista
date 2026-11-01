@@ -73,17 +73,24 @@ public class QuickController {
         qp.repaint();
     }
 
+    // Actualizar todos los paneles.
     public void refreshFavorites() {
         mainView.getQuickPanel()
                 .getFavoritesPanel()
                 .refresh();
     }
+    public void refreshSearch() {
+        mainView.getQuickPanel()
+                .getSearchPanel()
+                .refresh();
+    }
+
 
     // Abrir apunte o carpeta con su id.
     public void openQuickItem(QuickCard qc) {
         if (qc.isFolder()) {
             mainView.getMainController().enterFolder(qc.getId());
-            mainView.refreshContent();
+            mainView.showContent();
         } else {
             mainView.openNote(qc.getId());
         }
