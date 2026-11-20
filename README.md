@@ -118,6 +118,7 @@
 - [ ] Conectar controlador con modelo y vista.
 - [x] Mostrar y organizar la lista de apuntes y carpetas.
 - [ ] Permitir ordenar los apuntes.
+- [ ] Permitir modificar tamaño de letra en un apunte, color, fuente... como en el Word.
 <p><b>A futuro</b></p>
 
 - [ ] Añadir modo oscuro.
